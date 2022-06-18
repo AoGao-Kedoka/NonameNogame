@@ -27,6 +27,8 @@ public class CharacterController : MonoBehaviour
 
     [SerializeField] private TrailRenderer trailRenderer;
     [SerializeField] private ProgressBar progressBar;
+    
+    private bool _canOverride = false;
 
 
     private void Awake()
@@ -138,7 +140,20 @@ public class CharacterController : MonoBehaviour
     
     private void Override(InputAction.CallbackContext context)
     {
-        progressBar.StartOverride();
+        if (_canOverride)
+            progressBar.StartOverride();
+    }
+
+
+    public void InOverrideRange()
+    {
+        _canOverride = true;
+    }
+
+
+    public void LeftOverrideRange()
+    {
+        _canOverride = false;
     }
 
 

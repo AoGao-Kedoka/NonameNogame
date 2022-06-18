@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 3431630278222520306}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -109,6 +109,7 @@ MonoBehaviour:
   _dashingTime: 0.2
   _dashingCooldown: 1
   trailRenderer: {fileID: 3431630278222520306}
+  progressBar: {fileID: 0}
 --- !u!50 &3431630278222520304
 Rigidbody2D:
   serializedVersion: 4
