@@ -37,7 +37,7 @@ public class ProgressBar : MonoBehaviour
         fill.offsetMax = new Vector2(_origX, fill.offsetMax.y);
         _notFilled = true;
         foreach(GameObject obj in inrangeObstacles)
-{
+        {
             obj.GetComponent<Obstacle>().SetOverride();
         }
     }
