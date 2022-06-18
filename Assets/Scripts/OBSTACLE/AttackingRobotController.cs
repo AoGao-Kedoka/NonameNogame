@@ -12,30 +12,15 @@ public class AttackingRobotController : Obstacle
     private PlayerInputAction _playerInputAction;
     private bool overrided = false;
 
-    private void Awake()
-    {
-        _playerInputAction = new PlayerInputAction();
-    }
 
-    private void OnEnable()
-    {
-        _playerInputAction.Enable();
-    }
-
-  /*  private void OnDisable()
-    {
-        _playerInputAction.Disable();
-        _playerInputAction.PLAYER.DEBUG.started -= GetOverride;
-    }
     private void Start()
     {
-        _playerInputAction.PLAYER.DEBUG.started += GetOverride;
         _chasingRobot = GameObject.Find("ChasingRobot");
-    }*/
+    }
 
     private void Update()
     {
-        if (overrided)
+        if (overriden)
         {
             transform.position -= new Vector3(_overrideSpeed, 0, 0) * Time.deltaTime;
         }

@@ -158,7 +158,6 @@ public class CharacterController : MonoBehaviour
         if (_canOverride)
         {
             progressBar.StartOverride(inrangeObstacles);
-            inrangeObstacles.Clear();
             _canOverride = false;
             _animator.SetBool("smash", true);           
 
