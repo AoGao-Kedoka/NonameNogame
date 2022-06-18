@@ -53,6 +53,15 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""DASH"",
+                    ""type"": ""Button"",
+                    ""id"": ""9fbc8ffe-bcf8-4a15-9062-2541419d7fad"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -157,8 +166,8 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""8c222694-2620-448d-8cdc-b1d3076825b1"",
-                    ""path"": ""<Keyboard>/w"",
+                    ""id"": ""da111647-76ed-4407-8398-e47465916b35"",
+                    ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -168,8 +177,8 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""da111647-76ed-4407-8398-e47465916b35"",
-                    ""path"": ""<Keyboard>/space"",
+                    ""id"": ""2292a197-9409-4ae1-96b9-ad9ac63fa013"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -190,8 +199,8 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""de5e4d09-bcbd-4a9f-9098-e1bec1a3a69e"",
-                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""id"": ""533d3bef-40ab-446a-8093-64aadb9a554e"",
+                    ""path"": ""<Gamepad>/leftStick/down"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -201,12 +210,23 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""533d3bef-40ab-446a-8093-64aadb9a554e"",
-                    ""path"": ""<Gamepad>/leftStick/down"",
+                    ""id"": ""f16f10ff-b58b-406d-b5b8-58d4f49813ca"",
+                    ""path"": ""<Keyboard>/shift"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""FALL"",
+                    ""action"": ""DASH"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1d2c89fa-2fac-41bf-920a-a4bfab34bc08"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DASH"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -220,6 +240,7 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
         m_PLAYER_MOVE = m_PLAYER.FindAction("MOVE", throwIfNotFound: true);
         m_PLAYER_JUMP = m_PLAYER.FindAction("JUMP", throwIfNotFound: true);
         m_PLAYER_FALL = m_PLAYER.FindAction("FALL", throwIfNotFound: true);
+        m_PLAYER_DASH = m_PLAYER.FindAction("DASH", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -282,6 +303,7 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
     private readonly InputAction m_PLAYER_MOVE;
     private readonly InputAction m_PLAYER_JUMP;
     private readonly InputAction m_PLAYER_FALL;
+    private readonly InputAction m_PLAYER_DASH;
     public struct PLAYERActions
     {
         private @PlayerInputAction m_Wrapper;
@@ -289,6 +311,7 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
         public InputAction @MOVE => m_Wrapper.m_PLAYER_MOVE;
         public InputAction @JUMP => m_Wrapper.m_PLAYER_JUMP;
         public InputAction @FALL => m_Wrapper.m_PLAYER_FALL;
+        public InputAction @DASH => m_Wrapper.m_PLAYER_DASH;
         public InputActionMap Get() { return m_Wrapper.m_PLAYER; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -307,6 +330,9 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                 @FALL.started -= m_Wrapper.m_PLAYERActionsCallbackInterface.OnFALL;
                 @FALL.performed -= m_Wrapper.m_PLAYERActionsCallbackInterface.OnFALL;
                 @FALL.canceled -= m_Wrapper.m_PLAYERActionsCallbackInterface.OnFALL;
+                @DASH.started -= m_Wrapper.m_PLAYERActionsCallbackInterface.OnDASH;
+                @DASH.performed -= m_Wrapper.m_PLAYERActionsCallbackInterface.OnDASH;
+                @DASH.canceled -= m_Wrapper.m_PLAYERActionsCallbackInterface.OnDASH;
             }
             m_Wrapper.m_PLAYERActionsCallbackInterface = instance;
             if (instance != null)
@@ -320,6 +346,9 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                 @FALL.started += instance.OnFALL;
                 @FALL.performed += instance.OnFALL;
                 @FALL.canceled += instance.OnFALL;
+                @DASH.started += instance.OnDASH;
+                @DASH.performed += instance.OnDASH;
+                @DASH.canceled += instance.OnDASH;
             }
         }
     }
@@ -329,5 +358,6 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
         void OnMOVE(InputAction.CallbackContext context);
         void OnJUMP(InputAction.CallbackContext context);
         void OnFALL(InputAction.CallbackContext context);
+        void OnDASH(InputAction.CallbackContext context);
     }
 }

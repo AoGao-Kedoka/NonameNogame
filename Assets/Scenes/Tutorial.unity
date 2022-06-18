@@ -352,11 +352,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 149774b209780664785be23ee9bf181b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  backgroundSpeed: 0.5
+  backgroundSpeed: 9
   background: {fileID: 1601916935}
-  midgroundSpeed: 1
+  midgroundSpeed: 14
   midground: {fileID: 1015840909}
-  forgroundSpeed: 1.5
+  forgroundSpeed: 20
   forground: {fileID: 1039862806}
 --- !u!1 &835648163
 GameObject:

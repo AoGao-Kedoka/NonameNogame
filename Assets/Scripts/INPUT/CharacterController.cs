@@ -13,7 +13,19 @@ public class CharacterController : MonoBehaviour
     private PlayerInputAction _playerInputAction;
     private Rigidbody2D _rigidbody;
     private Collider2D _collider;
+    
     private bool _faceRight = true;
+    private bool _doubleJump;
+    private bool _canDash = true;
+    private bool _isDashing;
+
+    private float _coyoteTime = .25f;
+    private float _coyoteTimeCounter;
+    [SerializeField] private float _dashingPower = 24f;
+    [SerializeField] private float _dashingTime = 0.2f;
+    [SerializeField] private float _dashingCooldown = 1f;
+
+    [SerializeField] private TrailRenderer trailRenderer;
 
 
     private void Awake()
@@ -28,12 +40,34 @@ public class CharacterController : MonoBehaviour
     void Start()
     {
         _playerInputAction.PLAYER.JUMP.started += Jump;
+        _playerInputAction.PLAYER.DASH.started += Dash;
     }
 
     
     // Update is called once per frame
     void Update()
     {
+        if (_isDashing)
+            return;
+        
+        //Move();
+        if (isGrounded())
+        {
+            _coyoteTimeCounter = _coyoteTime;
+            _doubleJump = false;
+        }
+        else
+        {
+            _coyoteTimeCounter -= Time.deltaTime;
+        }
+    }
+
+
+    private void FixedUpdate()
+    {
+        if (_isDashing)
+            return;
+        
         Move();
     }
 
@@ -47,6 +81,7 @@ public class CharacterController : MonoBehaviour
     private void OnDisable()
     {
         _playerInputAction.PLAYER.JUMP.started -= Jump;
+        _playerInputAction.PLAYER.DASH.started -= Dash;
         _playerInputAction.Disable();
     }
 
@@ -54,11 +89,13 @@ public class CharacterController : MonoBehaviour
     private void Move()
     {
         float val = _playerInputAction.PLAYER.MOVE.ReadValue<float>();
-        Vector3 currentPosition = transform.position;
-        currentPosition.x += val * speed * Time.deltaTime;
+        // Vector3 currentPosition = transform.position;
+        // currentPosition.x += val * speed * Time.deltaTime;
+        //
+        // transform.position = currentPosition;
 
-        transform.position = currentPosition;
-
+        _rigidbody.velocity = new Vector2(val * speed, _rigidbody.velocity.y);
+        
         Flip(val);
     }
 
@@ -77,8 +114,22 @@ public class CharacterController : MonoBehaviour
 
     private void Jump(InputAction.CallbackContext context)
     {
-        if (isGrounded())
-            _rigidbody.AddForce(new Vector2(0, jumpSpeed), ForceMode2D.Impulse);
+        if (_isDashing)
+            return;
+        
+        if (_coyoteTimeCounter > 0f || _doubleJump)
+        {
+            _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, jumpSpeed);
+            _doubleJump = !_doubleJump;
+            _coyoteTimeCounter = 0f;
+        }
+    }
+
+
+    private void Dash(InputAction.CallbackContext context)
+    {
+        if (_canDash)
+            StartCoroutine(Dash());
     }
 
 
@@ -112,5 +163,26 @@ public class CharacterController : MonoBehaviour
             if(!Physics2D.OverlapArea(topLeft, botRight, ground))
                 _collider.enabled = true;
         }
+    }
+
+    private IEnumerator Dash()
+    {
+        _canDash = false;
+        _isDashing = true;
+
+        float originalGravity = _rigidbody.gravityScale;
+        _rigidbody.gravityScale = 0f;
+        _rigidbody.velocity = new Vector2(transform.localScale.x * _dashingPower, 0f);
+        trailRenderer.emitting = true;
+        
+        yield return new WaitForSeconds(_dashingTime);
+        
+        trailRenderer.emitting = false;
+        _rigidbody.gravityScale = originalGravity;
+        _isDashing = false;
+        
+        yield return new WaitForSeconds(_dashingCooldown);
+        
+        _canDash = true;
     }
 }

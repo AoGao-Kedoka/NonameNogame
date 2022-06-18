@@ -40,9 +40,9 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-         background.transform.position -= new Vector3(backgroundSpeed, 0, 0);
-         midground.transform.position -= new Vector3(midgroundSpeed, 0, 0);
-         forground.transform.position -= new Vector3(forgroundSpeed, 0, 0);
+         background.transform.position -= new Vector3(backgroundSpeed, 0, 0) * Time.deltaTime;
+         midground.transform.position -= new Vector3(midgroundSpeed, 0, 0) * Time.deltaTime;
+         forground.transform.position -= new Vector3(forgroundSpeed, 0, 0) * Time.deltaTime;
          GeneratePic(_backgroundList, 256, background);
          GeneratePic(_midgroundList, 256, midground);
          GeneratePic(_forgroundList, 352, forground);
