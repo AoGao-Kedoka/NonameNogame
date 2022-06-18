@@ -8,7 +8,7 @@ using UnityEngine;
 public class AttackingRobotController : MonoBehaviour
 {
     [SerializeField] private float _overrideSpeed;
-    private GameObject _chasingRobots;
+    private GameObject _chasingRobot;
     private PlayerInputAction _playerInputAction;
     private bool overrided = false;
 
@@ -30,7 +30,7 @@ public class AttackingRobotController : MonoBehaviour
     private void Start()
     {
         _playerInputAction.PLAYER.DEBUG.started += GetOverride;
-        _chasingRobots = GameObject.Find("ChasingRobot");
+        _chasingRobot = GameObject.Find("ChasingRobot");
     }
 
     private void Update()
@@ -45,6 +45,14 @@ public class AttackingRobotController : MonoBehaviour
     {
         Debug.Log("Override called");
         overrided = true;
-        Physics2D.IgnoreLayerCollision(this.gameObject.layer, _chasingRobots.gameObject.layer, true);
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("ChasingRobot"))
+        {
+        }
+    }
+    
+    
 }
