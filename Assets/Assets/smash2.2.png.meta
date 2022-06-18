@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e4271b161fe086d4b96825dd3bf82db9
+guid: 8b7af8319d1655c41ac8df11bd51db53
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -42,7 +42,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -114,112 +114,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: smash1_0
-      rect:
-        serializedVersion: 2
-        x: 19
-        y: 176
-        width: 285
-        height: 347
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0854586004a9f10479882c9a864c4df9
-      internalID: -996561789
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: smash1_1
-      rect:
-        serializedVersion: 2
-        x: 342
-        y: 176
-        width: 327
-        height: 336
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 13012db1363b095418d1a9fead0fea7a
-      internalID: 1865236865
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: smash1_2
-      rect:
-        serializedVersion: 2
-        x: 718
-        y: 155
-        width: 347
-        height: 357
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 25941cdd52e815e41b85f8de6313509c
-      internalID: 525084028
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: smash1_3
-      rect:
-        serializedVersion: 2
-        x: 1103
-        y: 207
-        width: 253
-        height: 451
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 613cf6a540346b4409a959b62cf4c1d2
-      internalID: -360836328
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: smash1_4
-      rect:
-        serializedVersion: 2
-        x: 1447
-        y: 228
-        width: 337
-        height: 399
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 73e44d9b6f215bd45ba8d914f735090e
-      internalID: -1314948669
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     physicsShape: []
     bones: []
@@ -230,12 +125,7 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      smash1_2: 525084028
-      smash1_3: -360836328
-      smash1_0: -996561789
-      smash1_4: -1314948669
-      smash1_1: 1865236865
+    nameFileIdTable: {}
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

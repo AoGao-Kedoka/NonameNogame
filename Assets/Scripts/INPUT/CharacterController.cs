@@ -155,7 +155,11 @@ public class CharacterController : MonoBehaviour
     private void Override(InputAction.CallbackContext context)
     {
         if (_canOverride)
+        {
             progressBar.StartOverride();
+            _animator.SetBool("smash", true);
+
+        }
     }
 
 

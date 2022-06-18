@@ -8,6 +8,7 @@ public class ProgressBar : MonoBehaviour
     [SerializeField] private float timeToOverride = 0.000005f;
     [SerializeField] private Animator animator;
 
+
     private bool _notFilled = true;
     private float _origX;
     
@@ -32,6 +33,7 @@ public class ProgressBar : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         animator.SetTrigger("GoOut");
         yield return new WaitForSeconds(0.15f);
+        GameObject.Find("Player").GetComponent<Animator>().SetBool("smash", false);
         fill.offsetMax = new Vector2(_origX, fill.offsetMax.y);
         _notFilled = true;
     }
