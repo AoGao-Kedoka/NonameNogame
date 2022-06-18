@@ -69,6 +69,7 @@ public class CharacterController : MonoBehaviour
         }
         else
         {
+            _animator.SetBool("jump", false);
             _coyoteTimeCounter -= Time.deltaTime;
         }
     }
@@ -139,6 +140,7 @@ public class CharacterController : MonoBehaviour
         
         if (_coyoteTimeCounter > 0f || _doubleJump)
         {
+            _animator.SetBool("jump", true);
             _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, jumpSpeed);
             _doubleJump = !_doubleJump;
             _coyoteTimeCounter = 0f;
@@ -233,15 +235,15 @@ public class CharacterController : MonoBehaviour
     public void Die()
     {
         //Play Dead Animation
-        //_animator.SetBool("dead", true);
+        _animator.SetBool("dead", true);
 
         ////Respawn at last Checkpoint, wait at the same position 1 seconds, and then respone
-        var currentScene = SceneManager.GetActiveScene();
-        this.transform.DOMoveX(transform.position.x, 1).OnComplete(() =>
-        {
+        //var currentScene = SceneManager.GetActiveScene();
+        //this.transform.DOMoveX(transform.position.x, 1).OnComplete(() =>
+        //{
             // reset the whole scene
-            SceneManager.LoadScene(currentScene.name);
-        });
+            //SceneManager.LoadScene(currentScene.name);
+        //});
     }
 
     private void OnCollisionEnter2D(Collision2D collision) {

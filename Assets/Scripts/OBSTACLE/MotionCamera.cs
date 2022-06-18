@@ -11,7 +11,6 @@ public class MotionCamera : Obstacle
     public float TotalSpeed;
     public float MaximumRotateDegree = 30f;
     public GameObject ice;
-    public bool overriden = false;
 
 
     void Start()
@@ -35,13 +34,14 @@ public class MotionCamera : Obstacle
         
     }
 
-    public void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.CompareTag("Player")&& !overriden)
+        Debug.Log("dead !!!");
+        if(collision.CompareTag("Player")&& !overriden)
         {
-            //player die
+            GameObject.Find("Player").GetComponent<CharacterController>().Die();
         }
-        if(collision.gameObject.CompareTag("ChasingRobot") && overriden)
+        if(collision.CompareTag("ChasingRobot") && overriden)
         {
             StartCoroutine(FreezeEnemy(collision.gameObject));
 
