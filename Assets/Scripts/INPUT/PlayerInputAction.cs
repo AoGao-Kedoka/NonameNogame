@@ -62,6 +62,15 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""DEBUG"",
+                    ""type"": ""Button"",
+                    ""id"": ""2bfed189-0cde-4cac-94ea-0c1bdd451510"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -229,6 +238,17 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                     ""action"": ""DASH"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f88ed308-838a-4ac1-852e-e7c7a90ef563"",
+                    ""path"": ""<Keyboard>/o"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DEBUG"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -241,6 +261,7 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
         m_PLAYER_JUMP = m_PLAYER.FindAction("JUMP", throwIfNotFound: true);
         m_PLAYER_FALL = m_PLAYER.FindAction("FALL", throwIfNotFound: true);
         m_PLAYER_DASH = m_PLAYER.FindAction("DASH", throwIfNotFound: true);
+        m_PLAYER_DEBUG = m_PLAYER.FindAction("DEBUG", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -304,6 +325,7 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
     private readonly InputAction m_PLAYER_JUMP;
     private readonly InputAction m_PLAYER_FALL;
     private readonly InputAction m_PLAYER_DASH;
+    private readonly InputAction m_PLAYER_DEBUG;
     public struct PLAYERActions
     {
         private @PlayerInputAction m_Wrapper;
@@ -312,6 +334,7 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
         public InputAction @JUMP => m_Wrapper.m_PLAYER_JUMP;
         public InputAction @FALL => m_Wrapper.m_PLAYER_FALL;
         public InputAction @DASH => m_Wrapper.m_PLAYER_DASH;
+        public InputAction @DEBUG => m_Wrapper.m_PLAYER_DEBUG;
         public InputActionMap Get() { return m_Wrapper.m_PLAYER; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -333,6 +356,9 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                 @DASH.started -= m_Wrapper.m_PLAYERActionsCallbackInterface.OnDASH;
                 @DASH.performed -= m_Wrapper.m_PLAYERActionsCallbackInterface.OnDASH;
                 @DASH.canceled -= m_Wrapper.m_PLAYERActionsCallbackInterface.OnDASH;
+                @DEBUG.started -= m_Wrapper.m_PLAYERActionsCallbackInterface.OnDEBUG;
+                @DEBUG.performed -= m_Wrapper.m_PLAYERActionsCallbackInterface.OnDEBUG;
+                @DEBUG.canceled -= m_Wrapper.m_PLAYERActionsCallbackInterface.OnDEBUG;
             }
             m_Wrapper.m_PLAYERActionsCallbackInterface = instance;
             if (instance != null)
@@ -349,6 +375,9 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                 @DASH.started += instance.OnDASH;
                 @DASH.performed += instance.OnDASH;
                 @DASH.canceled += instance.OnDASH;
+                @DEBUG.started += instance.OnDEBUG;
+                @DEBUG.performed += instance.OnDEBUG;
+                @DEBUG.canceled += instance.OnDEBUG;
             }
         }
     }
@@ -359,5 +388,6 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
         void OnJUMP(InputAction.CallbackContext context);
         void OnFALL(InputAction.CallbackContext context);
         void OnDASH(InputAction.CallbackContext context);
+        void OnDEBUG(InputAction.CallbackContext context);
     }
 }

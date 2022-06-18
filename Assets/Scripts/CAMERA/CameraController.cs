@@ -58,7 +58,7 @@ public class CameraController : MonoBehaviour
 
     void GeneratePic(List<GameObject> picList, float scaleX, GameObject parent)
     {
-        if (picList[0].transform.position.x <= -scaleX)
+        if (picList[0].transform.position.x <= this.transform.position.x - 2 * scaleX)
         {
             var instance = picList[0];
             picList.RemoveAt(0);
