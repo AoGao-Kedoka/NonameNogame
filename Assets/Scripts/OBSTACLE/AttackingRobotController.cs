@@ -33,7 +33,7 @@ public class AttackingRobotController : Obstacle
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("ChasingRobot") && overrided == true)
+        if (collision.CompareTag("ChasingRobot") && overriden == true)
         {
             Debug.Log("DeBUG");
             collision.GetComponent<ChasingRobotController>().PushedBack();
