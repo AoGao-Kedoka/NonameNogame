@@ -51,8 +51,8 @@ public class AttackingRobotController : MonoBehaviour
     {
         if (collision.CompareTag("ChasingRobot"))
         {
+            collision.GetComponent<ChasingRobotController>().PushedBack();
         }
     }
-    
     
 }
