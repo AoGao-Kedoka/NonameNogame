@@ -8,11 +8,12 @@ public class ChasingRobotController : MonoBehaviour
     public float chasingSpeed;
     [SerializeField] private Transform player;
     private bool pushingBack = false;
+    public bool frozen = false;
 
     // Update is called once per frame
     void Update()
     {
-        if (!pushingBack)
+        if (!pushingBack&&!frozen)
         {
             this.transform.position += new Vector3(chasingSpeed, 0, 0) * Time.deltaTime;
         }
