@@ -5,7 +5,7 @@ using UnityEditor;
 // Initially aimed at right side, continously kill player if he goes to the right
 // after override shoot one beam to the left
 
-public class LaserController : MonoBehaviour
+public class LaserController : Obstacle
 {
     [SerializeField] private Vector3 defDistanceRay = new Vector3 (100f, 0, 0);
 
@@ -14,26 +14,27 @@ public class LaserController : MonoBehaviour
     Transform _transform;
     public GameObject bulletPrefab;
 
-    [SerializeField] public bool is_overriden = false;
     // Start is called before the first frame update
     private void Awake()
     {
         this._transform = GetComponent<Transform>();
+        lineRenderer.widthMultiplier = 10f;
     }
 
     // Update is called once per frame
     void Update()
     {
-            if (!is_overriden)
+            if (!this.overriden)
             {
                 KillPlayer();
             }
     }
 
     [ContextMenu("Interact Pressed")]
-    public void Interact()
+    public override void SetOverride()
     {
-        is_overriden = true;
+        Debug.Log("test");
+        overriden = true;
         KillEnemies();
         Destroy(this.GetComponent<LineRenderer>());
     }
@@ -63,7 +64,7 @@ public class LaserController : MonoBehaviour
     private void KillEnemies()
     {
         ///his.transform.parent.RotateAround(transform.position, transform.parent.up, 180f);
-        //this.transform.parent.localScale *= -1;//(transform.position, transform.parent.up, 180f);
+        this.transform.parent.localScale *= -1;//(transform.position, transform.parent.up, 180f);
         //Vector3 position = this.GetComponent<Renderer>().bounds.center;
 
        // this.transform.RotateAround(position, new Vector3(0f, 180f,0f), 10 * Time.deltaTime);

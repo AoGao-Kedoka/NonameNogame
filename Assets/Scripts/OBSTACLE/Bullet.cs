@@ -7,7 +7,7 @@ using DG.Tweening;
 public class Bullet : MonoBehaviour
 {
     // Start is called before the first frame update
-    [SerializeField] public float speed = 20f;
+    [SerializeField] public float speed = 80f;
     [SerializeField] public Rigidbody2D rb;
      private float pushbackForce = 70f;
 
@@ -15,6 +15,7 @@ public class Bullet : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        rb.transform.localScale = new Vector3(20.0f, 10.0f, 10.0f);
         rb.velocity = -transform.right * speed;
         this.rb.gravityScale = 0;
         rb.isKinematic = true;
