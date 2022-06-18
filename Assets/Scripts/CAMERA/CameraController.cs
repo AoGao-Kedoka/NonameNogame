@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -28,17 +27,23 @@ public class CameraController : MonoBehaviour
 
     private void Start()
     {
+        var cam = GetComponent<Camera>();
+        cam.backgroundColor = Color.black;
+
         foreach (Transform child in background.transform)
         {
-            _backgroundList.Add(child.gameObject);
+            if(child.CompareTag("Background"))
+                _backgroundList.Add(child.gameObject);
         }
         foreach (Transform child in midground.transform)
         {
-            _midgroundList.Add(child.gameObject);
+            if(child.CompareTag("Background"))
+                _midgroundList.Add(child.gameObject);
         }
         foreach (Transform child in forground.transform)
         {
-            _forgroundList.Add(child.gameObject);
+            if(child.CompareTag("Background"))
+                _forgroundList.Add(child.gameObject);
         }
     }
 

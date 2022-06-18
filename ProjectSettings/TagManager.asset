@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Floating
+  - Background
   layers:
   - Default
   - TransparentFX

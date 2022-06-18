@@ -14,7 +14,6 @@ public class ChasingRobotController : MonoBehaviour
     private void Start()
     {
         _startPositionX = this.transform.position.x - this.transform.parent.position.x;
-
     }
 
     // Update is called once per frame
@@ -28,7 +27,7 @@ public class ChasingRobotController : MonoBehaviour
         this.transform.position += new Vector3(chasingSpeed, 0, 0) * Time.deltaTime;
     }
 
-    void PushBackward()
+    public void PushBackward()
     {
         this.transform.DOMoveX(this.transform.parent.position.x + _startPositionX, 1);
     }
