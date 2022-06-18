@@ -43,13 +43,12 @@ public class AttackingRobotController : MonoBehaviour
 
     public void GetOverride(InputAction.CallbackContext context)
     {
-        Debug.Log("Override called");
         overrided = true;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("ChasingRobot"))
+        if (collision.CompareTag("ChasingRobot") && overrided == true)
         {
             collision.GetComponent<ChasingRobotController>().PushedBack();
         }
