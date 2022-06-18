@@ -15,7 +15,7 @@ public class Bullet : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        rb.velocity = transform.right * speed;
+        rb.velocity = -transform.right * speed;
         this.rb.gravityScale = 0;
         rb.isKinematic = true;
         //rb.detectCollisions = false;

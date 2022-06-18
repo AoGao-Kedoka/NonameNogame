@@ -41,33 +41,24 @@ public class LaserController : MonoBehaviour
     private void KillPlayer()
     {
         RaycastHit2D hit = Physics2D.Raycast(this._transform.position, transform.right, 100f);
-
-
-
-        if (hit) {
-            bool found = false;
-            var temp = GameObject.FindGameObjectsWithTag("Player");
-            for (int i = 0; i < temp.Length; i++)
-            {
-                if (temp[i] == hit)
-                {
-                    found = true;
-                }
-            }
-
-            if(found)
-           {
-                   Draw2DRay(laserFirePoint.position, hit.point);
-                    // TODO EMIT PLAYER DEATH?
-             }
-           else
-               {
-                   Draw2DRay(laserFirePoint.position, laserFirePoint.position + this.defDistanceRay);
-               }
+        bool found = false;
+        if (hit.collider.gameObject.CompareTag("Player"))
+        {
+            found = true;
         }
-
-
+        if(found)
+        {
+            Draw2DRay(laserFirePoint.position, hit.point);
+            hit.collider.gameObject.GetComponent<CharacterController>().Die();
+        }
+        else
+        {
+            Draw2DRay(laserFirePoint.position, laserFirePoint.position + this.defDistanceRay);
+        }
     }
+
+
+    
 
     private void KillEnemies()
     {

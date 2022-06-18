@@ -158,7 +158,6 @@ public class CharacterController : MonoBehaviour
         if (_canOverride)
         {
             progressBar.StartOverride(inrangeObstacles);
-            inrangeObstacles.Clear();
             _canOverride = false;
             _animator.SetBool("smash", true);           
 
@@ -237,23 +236,23 @@ public class CharacterController : MonoBehaviour
         //_animator.SetBool("dead", true);
 
         ////Respawn at last Checkpoint, wait at the same position 1 seconds, and then respone
-        //var currentScene = SceneManager.GetActiveScene();
-        //this.transform.DOMoveX(transform.position.x, 1).OnComplete(() =>
-        //{
-        //    // reset the whole scene
-        //    SceneManager.LoadScene(currentScene.name);
-        //});
+        var currentScene = SceneManager.GetActiveScene();
+        this.transform.DOMoveX(transform.position.x, 1).OnComplete(() =>
+        {
+            // reset the whole scene
+            SceneManager.LoadScene(currentScene.name);
+        });
     }
 
     private void OnCollisionEnter2D(Collision2D collision) {
-        //TODO: add more
-        // List<String> tags = new List<String> { "Obstacle", "ChasingRobot" };
-        // foreach(var tag in tags)
-        // {
-        //     if (collision.gameObject.CompareTag(tag))
-        //     {
-        //         Die();
-        //     }
-        // }
+        //TODO: add more 
+        List<String> tags = new List<String> { "ChasingRobot" };
+        foreach(var tag in tags)
+        {
+            if (collision.gameObject.CompareTag(tag))
+            {
+                Die();
+            }
+        }
     }
 }

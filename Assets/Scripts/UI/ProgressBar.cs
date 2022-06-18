@@ -40,6 +40,7 @@ public class ProgressBar : MonoBehaviour
         {
             obj.GetComponent<Obstacle>().SetOverride();
         }
+        inrangeObstacles.Clear();
     }
 
 
