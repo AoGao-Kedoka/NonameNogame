@@ -66,10 +66,10 @@ public class CharacterController : MonoBehaviour
         {
             _coyoteTimeCounter = _coyoteTime;
             _doubleJump = false;
+            _animator.SetBool("jump", false);
         }
         else
         {
-            _animator.SetBool("jump", false);
             _coyoteTimeCounter -= Time.deltaTime;
         }
     }
