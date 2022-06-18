@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-public class MotionCamera : MonoBehaviour
+public class MotionCamera : Obstacle
 {
     [SerializeField]
     public float RotateSpeed = 1;
@@ -48,8 +48,5 @@ public class MotionCamera : MonoBehaviour
         }
     }
 
-    public void SetOverride()
-    {
-        overriden = true;
-    }
+
 }

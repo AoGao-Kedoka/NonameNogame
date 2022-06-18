@@ -23,7 +23,7 @@ public class OverrideTriggerArea : MonoBehaviour
         if (col.gameObject.CompareTag("Player"))
         {
             CharacterController cs = col.gameObject.GetComponent<CharacterController>();
-            cs.InOverrideRange();
+            cs.InOverrideRange(this.gameObject);
         }
     }
     
@@ -33,7 +33,7 @@ public class OverrideTriggerArea : MonoBehaviour
         if (col.gameObject.CompareTag("Player"))
         {
             CharacterController cs = col.gameObject.GetComponent<CharacterController>();
-            cs.LeftOverrideRange();
+            cs.LeftOverrideRange(this.gameObject);
         }
     }
     

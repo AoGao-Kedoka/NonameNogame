@@ -30,13 +30,14 @@ public class CharacterController : MonoBehaviour
     [SerializeField] private ProgressBar progressBar;
 
     private Animator _animator;
-    
+    private List<GameObject> inrangeObstacles;
     private bool _canOverride = false;
 
     private Vector3 _startPosition;
 
     private void Awake()
     {
+        inrangeObstacles= new List<GameObject>();
         _playerInputAction = new PlayerInputAction();
         _rigidbody = GetComponent<Rigidbody2D>();
         _collider = GetComponent<Collider2D>();
@@ -156,22 +157,25 @@ public class CharacterController : MonoBehaviour
     {
         if (_canOverride)
         {
-            progressBar.StartOverride();
-            _animator.SetBool("smash", true);
+            progressBar.StartOverride(inrangeObstacles);
+            inrangeObstacles.Clear();
+            _canOverride = false;
+            _animator.SetBool("smash", true);           
 
         }
     }
 
 
-    public void InOverrideRange()
+    public void InOverrideRange(GameObject obj)
     {
+        inrangeObstacles.Add(obj);
         _canOverride = true;
     }
 
 
-    public void LeftOverrideRange()
+    public void LeftOverrideRange(GameObject obj)
     {
-        _canOverride = false;
+        inrangeObstacles.Remove(obj);        
     }
 
 

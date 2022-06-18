@@ -19,7 +19,7 @@ public class ProgressBar : MonoBehaviour
     }
 
     
-    private IEnumerator Override()
+    private IEnumerator Override(List<GameObject> inrangeObstacles)
     {
         animator.SetTrigger("Override");
         yield return new WaitForSeconds(0.1f);
@@ -36,11 +36,15 @@ public class ProgressBar : MonoBehaviour
         GameObject.Find("Player").GetComponent<Animator>().SetBool("smash", false);
         fill.offsetMax = new Vector2(_origX, fill.offsetMax.y);
         _notFilled = true;
+        foreach(GameObject obj in inrangeObstacles)
+{
+            obj.GetComponent<Obstacle>().SetOverride();
+        }
     }
 
 
-    public void StartOverride()
+    public void StartOverride(List<GameObject> inrangeObstacles)
     {
-        StartCoroutine(Override());
+        StartCoroutine(Override(inrangeObstacles));
     }
 }

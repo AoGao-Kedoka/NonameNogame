@@ -5,7 +5,7 @@ using DG.Tweening;
 using UnityEngine.InputSystem;
 using UnityEngine;
 
-public class AttackingRobotController : MonoBehaviour
+public class AttackingRobotController : Obstacle
 {
     [SerializeField] private float _overrideSpeed;
     private GameObject _chasingRobot;
@@ -22,7 +22,7 @@ public class AttackingRobotController : MonoBehaviour
         _playerInputAction.Enable();
     }
 
-    private void OnDisable()
+  /*  private void OnDisable()
     {
         _playerInputAction.Disable();
         _playerInputAction.PLAYER.DEBUG.started -= GetOverride;
@@ -31,7 +31,7 @@ public class AttackingRobotController : MonoBehaviour
     {
         _playerInputAction.PLAYER.DEBUG.started += GetOverride;
         _chasingRobot = GameObject.Find("ChasingRobot");
-    }
+    }*/
 
     private void Update()
     {
@@ -41,10 +41,10 @@ public class AttackingRobotController : MonoBehaviour
         }
     }
 
-    public void GetOverride(InputAction.CallbackContext context)
-    {
-        overrided = true;
-    }
+   // public void GetOverride(InputAction.CallbackContext context)
+    //{
+      //  overrided = true;
+    //}
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
