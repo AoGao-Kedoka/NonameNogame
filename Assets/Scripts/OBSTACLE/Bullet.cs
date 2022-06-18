@@ -16,7 +16,7 @@ public class Bullet : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         rb.transform.localScale = new Vector3(20.0f, 10.0f, 10.0f);
-        rb.velocity = -transform.right * speed;
+        rb.velocity = -transform.right * speed; 
         this.rb.gravityScale = 0;
         rb.isKinematic = true;
         //rb.detectCollisions = false;

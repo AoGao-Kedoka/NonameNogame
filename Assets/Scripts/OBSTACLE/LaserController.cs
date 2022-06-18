@@ -33,7 +33,6 @@ public class LaserController : Obstacle
     [ContextMenu("Interact Pressed")]
     public override void SetOverride()
     {
-        Debug.Log("test");
         overriden = true;
         KillEnemies();
         Destroy(this.GetComponent<LineRenderer>());
