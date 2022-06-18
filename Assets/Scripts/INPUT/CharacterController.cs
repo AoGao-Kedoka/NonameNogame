@@ -25,7 +25,6 @@ public class CharacterController : MonoBehaviour
     [SerializeField] private float _dashingTime = 0.2f;
     [SerializeField] private float _dashingCooldown = 1f;
 
-    [SerializeField] private TrailRenderer trailRenderer;
     [SerializeField] private ProgressBar progressBar;
     
     private bool _canOverride = false;
@@ -197,11 +196,9 @@ public class CharacterController : MonoBehaviour
         float originalGravity = _rigidbody.gravityScale;
         _rigidbody.gravityScale = 0f;
         _rigidbody.velocity = new Vector2(transform.localScale.x * _dashingPower, 0f);
-        trailRenderer.emitting = true;
         
         yield return new WaitForSeconds(_dashingTime);
         
-        trailRenderer.emitting = false;
         _rigidbody.gravityScale = originalGravity;
         _isDashing = false;
         

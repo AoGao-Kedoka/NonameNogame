@@ -5,7 +5,7 @@ using UnityEngine;
 public class ProgressBar : MonoBehaviour
 {
     [SerializeField] private RectTransform fill;
-    [SerializeField] private float timeToOverride = 0.0005f;
+    [SerializeField] private float timeToOverride = 0.000005f;
     [SerializeField] private Animator animator;
 
     private bool _notFilled = true;

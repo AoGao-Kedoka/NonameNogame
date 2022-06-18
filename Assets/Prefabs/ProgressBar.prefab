@@ -72,7 +72,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fill: {fileID: 5328718124082805568}
-  timeToOverride: 0.0005
+  timeToOverride: 0.00005
   animator: {fileID: 4966357805343962611}
 --- !u!1 &5328718123415609635
 GameObject:

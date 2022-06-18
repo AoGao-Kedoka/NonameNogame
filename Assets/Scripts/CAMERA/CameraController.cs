@@ -25,6 +25,8 @@ public class CameraController : MonoBehaviour
     [SerializeField] private float smoothTime = 0.2f;
     [SerializeField] private Transform target;
 
+    [SerializeField] private Rigidbody2D playerRigidbody;
+
     private void Start()
     {
         var cam = GetComponent<Camera>();
@@ -50,15 +52,17 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-         background.transform.position -= new Vector3(backgroundSpeed, 0, 0) * Time.deltaTime;
-         midground.transform.position -= new Vector3(midgroundSpeed, 0, 0) * Time.deltaTime;
-         forground.transform.position -= new Vector3(forgroundSpeed, 0, 0) * Time.deltaTime;
-         GeneratePic(_backgroundList, 256, background);
-         GeneratePic(_midgroundList, 256, midground);
-         GeneratePic(_forgroundList, 352, forground);
-
-         Vector3 targetPosition = new Vector3(target.position.x, transform.position.y, transform.position.z);
-         transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref _velocity, smoothTime);
+        if (playerRigidbody.velocity.x > 0f)
+        {
+            background.transform.position -= new Vector3(backgroundSpeed, 0, 0) * Time.deltaTime;
+            midground.transform.position -= new Vector3(midgroundSpeed, 0, 0) * Time.deltaTime;
+            forground.transform.position -= new Vector3(forgroundSpeed, 0, 0) * Time.deltaTime;
+            GeneratePic(_backgroundList, 256, background);
+            GeneratePic(_midgroundList, 256, midground);
+            GeneratePic(_forgroundList, 352, forground);
+        }
+        Vector3 targetPosition = new Vector3(target.position.x, transform.position.y, transform.position.z);
+        transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref _velocity, smoothTime);
     }
 
     void GeneratePic(List<GameObject> picList, float scaleX, GameObject parent)
