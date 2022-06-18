@@ -71,6 +71,15 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""OVERRIDE"",
+                    ""type"": ""Button"",
+                    ""id"": ""42d46547-702d-40c9-8407-06c8943705b2"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -249,6 +258,28 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                     ""action"": ""DEBUG"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""721189f8-4d24-438f-933b-0fd3547f5fef"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""OVERRIDE"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""97e2f669-aa01-4209-9eee-c4f606d64909"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""OVERRIDE"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -262,6 +293,7 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
         m_PLAYER_FALL = m_PLAYER.FindAction("FALL", throwIfNotFound: true);
         m_PLAYER_DASH = m_PLAYER.FindAction("DASH", throwIfNotFound: true);
         m_PLAYER_DEBUG = m_PLAYER.FindAction("DEBUG", throwIfNotFound: true);
+        m_PLAYER_OVERRIDE = m_PLAYER.FindAction("OVERRIDE", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -326,6 +358,7 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
     private readonly InputAction m_PLAYER_FALL;
     private readonly InputAction m_PLAYER_DASH;
     private readonly InputAction m_PLAYER_DEBUG;
+    private readonly InputAction m_PLAYER_OVERRIDE;
     public struct PLAYERActions
     {
         private @PlayerInputAction m_Wrapper;
@@ -335,6 +368,7 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
         public InputAction @FALL => m_Wrapper.m_PLAYER_FALL;
         public InputAction @DASH => m_Wrapper.m_PLAYER_DASH;
         public InputAction @DEBUG => m_Wrapper.m_PLAYER_DEBUG;
+        public InputAction @OVERRIDE => m_Wrapper.m_PLAYER_OVERRIDE;
         public InputActionMap Get() { return m_Wrapper.m_PLAYER; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -359,6 +393,9 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                 @DEBUG.started -= m_Wrapper.m_PLAYERActionsCallbackInterface.OnDEBUG;
                 @DEBUG.performed -= m_Wrapper.m_PLAYERActionsCallbackInterface.OnDEBUG;
                 @DEBUG.canceled -= m_Wrapper.m_PLAYERActionsCallbackInterface.OnDEBUG;
+                @OVERRIDE.started -= m_Wrapper.m_PLAYERActionsCallbackInterface.OnOVERRIDE;
+                @OVERRIDE.performed -= m_Wrapper.m_PLAYERActionsCallbackInterface.OnOVERRIDE;
+                @OVERRIDE.canceled -= m_Wrapper.m_PLAYERActionsCallbackInterface.OnOVERRIDE;
             }
             m_Wrapper.m_PLAYERActionsCallbackInterface = instance;
             if (instance != null)
@@ -378,6 +415,9 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                 @DEBUG.started += instance.OnDEBUG;
                 @DEBUG.performed += instance.OnDEBUG;
                 @DEBUG.canceled += instance.OnDEBUG;
+                @OVERRIDE.started += instance.OnOVERRIDE;
+                @OVERRIDE.performed += instance.OnOVERRIDE;
+                @OVERRIDE.canceled += instance.OnOVERRIDE;
             }
         }
     }
@@ -389,5 +429,6 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
         void OnFALL(InputAction.CallbackContext context);
         void OnDASH(InputAction.CallbackContext context);
         void OnDEBUG(InputAction.CallbackContext context);
+        void OnOVERRIDE(InputAction.CallbackContext context);
     }
 }

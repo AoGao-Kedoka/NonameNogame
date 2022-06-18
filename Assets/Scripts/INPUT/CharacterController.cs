@@ -26,6 +26,7 @@ public class CharacterController : MonoBehaviour
     [SerializeField] private float _dashingCooldown = 1f;
 
     [SerializeField] private TrailRenderer trailRenderer;
+    [SerializeField] private ProgressBar progressBar;
 
 
     private void Awake()
@@ -41,6 +42,7 @@ public class CharacterController : MonoBehaviour
     {
         _playerInputAction.PLAYER.JUMP.started += Jump;
         _playerInputAction.PLAYER.DASH.started += Dash;
+        _playerInputAction.PLAYER.OVERRIDE.started += Override;
     }
 
     
@@ -82,6 +84,7 @@ public class CharacterController : MonoBehaviour
     {
         _playerInputAction.PLAYER.JUMP.started -= Jump;
         _playerInputAction.PLAYER.DASH.started -= Dash;
+        _playerInputAction.PLAYER.OVERRIDE.started -= Override;
         _playerInputAction.Disable();
     }
 
@@ -130,6 +133,12 @@ public class CharacterController : MonoBehaviour
     {
         if (_canDash)
             StartCoroutine(Dash());
+    }
+    
+    
+    private void Override(InputAction.CallbackContext context)
+    {
+        progressBar.StartOverride();
     }
 
 

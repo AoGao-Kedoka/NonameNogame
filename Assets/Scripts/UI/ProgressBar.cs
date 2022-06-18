@@ -15,18 +15,11 @@ public class ProgressBar : MonoBehaviour
     void Start()
     {
         _origX = fill.offsetMax.x;
-        StartCoroutine(Override());
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    
     private IEnumerator Override()
     {
-        yield return new WaitForSeconds(1f);
         animator.SetTrigger("Override");
         yield return new WaitForSeconds(0.1f);
         while (_notFilled)
@@ -41,5 +34,12 @@ public class ProgressBar : MonoBehaviour
         animator.SetTrigger("GoOut");
         yield return new WaitForSeconds(0.15f);
         fill.offsetMax = new Vector2(_origX, fill.offsetMax.y);
+        _notFilled = true;
+    }
+
+
+    public void StartOverride()
+    {
+        StartCoroutine(Override());
     }
 }
