@@ -26,6 +26,8 @@ public class CharacterController : MonoBehaviour
     [SerializeField] private float _dashingCooldown = 1f;
 
     [SerializeField] private ProgressBar progressBar;
+
+    private Animator _animator;
     
     private bool _canOverride = false;
 
@@ -35,6 +37,7 @@ public class CharacterController : MonoBehaviour
         _playerInputAction = new PlayerInputAction();
         _rigidbody = GetComponent<Rigidbody2D>();
         _collider = GetComponent<Collider2D>();
+        _animator = GetComponent<Animator>();
     }
 
 
@@ -98,6 +101,14 @@ public class CharacterController : MonoBehaviour
         //
         // transform.position = currentPosition;
 
+        if(val > 0 || val < 0)
+        {
+            _animator.SetBool("running", true);
+        }
+        else
+        {
+            _animator.SetBool("running", false);
+        }
         _rigidbody.velocity = new Vector2(val * speed, _rigidbody.velocity.y);
         
         Flip(val);
