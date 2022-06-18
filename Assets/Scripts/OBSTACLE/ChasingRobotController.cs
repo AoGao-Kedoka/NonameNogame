@@ -1,39 +1,48 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using DG.Tweening;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class ChasingRobotController : MonoBehaviour
 {
     [SerializeField] private float chasingSpeed;
-    private float _startPositionX;
-    private Transform _cam;
+    [SerializeField] private Transform player;
+
+    private float distanceToPlayer;
 
     private void Start()
     {
-        _cam = this.transform.parent;
-        _startPositionX = this.transform.position.x - _cam.position.x;
+        distanceToPlayer = player.position.x - this.transform.position.x;
     }
-
     // Update is called once per frame
     void Update()
     {
-       MoveForward(); 
-    }
-
-    void MoveForward()
-    {
         this.transform.position += new Vector3(chasingSpeed, 0, 0) * Time.deltaTime;
+        if (Math.Abs(transform.position.x - player.transform.position.x) >= 300f)
+        {
+            var instance = Instantiate(this, new Vector3((player.transform.position.x - distanceToPlayer), transform.position.y, transform.position.z),
+                Quaternion.identity);
+            // wait for 2 seconds till the collider activate again
+            StartCoroutine(instance.DisableCollider());
+            // reset the layer collision between obstacle and chasing robot to disabled
+            Physics2D.IgnoreLayerCollision(8, this.gameObject.layer, false);
+            Destroy(this);
+        }
     }
 
-    public void PushBackward()
+    IEnumerator DisableCollider()
     {
-        // Move outside the camera and go back
-        this.transform.DOMoveX(_cam.position.x - 300, 2).OnComplete(() =>
+        var collider = this.GetComponent<Collider2D>();
+        collider.enabled = false;
+        var renderer = this.GetComponent<Renderer>();
+        //blinking 
+        for (int i = 0; i < 10; i++)
         {
-            transform.DOMoveX(_startPositionX, 4);
-        });
+            renderer.enabled = false;
+            yield return new WaitForSeconds(0.2f);
+            renderer.enabled = true;
+        }
+        collider.enabled = true; 
     }
+
+
 }
