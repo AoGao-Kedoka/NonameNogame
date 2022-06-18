@@ -5,7 +5,7 @@ using UnityEngine;
 public class Obstacle : MonoBehaviour
 {
     public bool overriden = false;
-    public void SetOverride()
+    public virtual void SetOverride()
     {
         overriden = true;
         Debug.Log("override");
