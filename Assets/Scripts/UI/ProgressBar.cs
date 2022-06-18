@@ -38,7 +38,14 @@ public class ProgressBar : MonoBehaviour
         _notFilled = true;
         foreach(GameObject obj in inrangeObstacles)
         {
-            obj.GetComponent<Obstacle>().SetOverride();
+            if (obj.CompareTag("Laser"))
+            {
+                obj.GetComponentInChildren<Obstacle>().SetOverride();
+            }
+            else
+            {
+                obj.GetComponent<Obstacle>().SetOverride();
+            }
         }
         inrangeObstacles.Clear();
     }
