@@ -37,7 +37,7 @@ public class AttackingRobotController : MonoBehaviour
     {
         if (overrided)
         {
-            transform.position -= new Vector3(_overrideSpeed, 0, 0);
+            transform.position -= new Vector3(_overrideSpeed, 0, 0) * Time.deltaTime;
         }
     }
 
@@ -50,6 +50,7 @@ public class AttackingRobotController : MonoBehaviour
     {
         if (collision.CompareTag("ChasingRobot") && overrided == true)
         {
+            Debug.Log("DeBUG");
             collision.GetComponent<ChasingRobotController>().PushedBack();
         }
     }

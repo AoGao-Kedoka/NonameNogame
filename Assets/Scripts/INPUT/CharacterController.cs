@@ -206,4 +206,12 @@ public class CharacterController : MonoBehaviour
         
         _canDash = true;
     }
+
+
+    public void Die()
+    {
+        //Play Dead Animation
+        
+        //Respawn at last Checkpoint
+    }
 }

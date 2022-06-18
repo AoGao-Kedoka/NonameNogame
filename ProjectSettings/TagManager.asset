@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Floating
   - Background
+  - ChasingRobot
   layers:
   - Default
   - TransparentFX

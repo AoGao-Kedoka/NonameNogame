@@ -25,7 +25,7 @@ public class ProgressBar : MonoBehaviour
         while (_notFilled)
         {
             Debug.Log(fill.offsetMax.x);
-            fill.offsetMax = new Vector2(fill.offsetMax.x + 1f, fill.offsetMax.y);
+            fill.offsetMax = new Vector2(fill.offsetMax.x + 2f, fill.offsetMax.y);
             yield return new WaitForSeconds(timeToOverride);
             if (fill.offsetMax.x >= -1f)
                 _notFilled = false;
