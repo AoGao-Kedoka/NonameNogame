@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -31,6 +32,7 @@ public class CharacterController : MonoBehaviour
     
     private bool _canOverride = false;
 
+    private Vector3 _startPosition;
 
     private void Awake()
     {
@@ -38,6 +40,7 @@ public class CharacterController : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody2D>();
         _collider = GetComponent<Collider2D>();
         _animator = GetComponent<Animator>();
+        _startPosition = transform.position;
     }
 
 
@@ -222,7 +225,24 @@ public class CharacterController : MonoBehaviour
     public void Die()
     {
         //Play Dead Animation
-        
-        //Respawn at last Checkpoint
+        // _animator.SetBool("dead", true);
+
+        //Respawn at last Checkpoint, wait at the same position 1 seconds, and then respone
+        this.transform.DOMoveX(transform.position.x, 1).OnComplete(() =>
+        {
+            this.transform.position = _startPosition;
+        });
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision) {
+        //TODO: add more
+        List<String> tags = new List<String> { "Obstacle", "ChasingRobot" };
+        foreach(var tag in tags)
+        {
+            if (collision.gameObject.CompareTag(tag))
+            {
+                Die();
+            }
+        }
     }
 }
