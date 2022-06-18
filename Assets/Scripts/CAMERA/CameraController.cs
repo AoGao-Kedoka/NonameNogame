@@ -21,6 +21,11 @@ public class CameraController : MonoBehaviour
     private List<GameObject> _midgroundList = new List<GameObject>();
     private List<GameObject> _forgroundList = new List<GameObject>();
 
+    private Vector3 _velocity = new Vector3(0f, 0f, -10f);
+    private Vector3 _offset = Vector3.zero;//new Vector3(0f, 71f, -200f);
+    [SerializeField] private float smoothTime = 0.2f;
+    [SerializeField] private Transform target;
+
     private void Start()
     {
         foreach (Transform child in background.transform)
@@ -46,6 +51,9 @@ public class CameraController : MonoBehaviour
          GeneratePic(_backgroundList, 256, background);
          GeneratePic(_midgroundList, 256, midground);
          GeneratePic(_forgroundList, 352, forground);
+
+         Vector3 targetPosition = new Vector3(target.position.x, transform.position.y, transform.position.z);
+         transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref _velocity, smoothTime);
     }
 
     void GeneratePic(List<GameObject> picList, float scaleX, GameObject parent)
