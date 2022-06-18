@@ -8,12 +8,13 @@ using UnityEngine.InputSystem;
 public class ChasingRobotController : MonoBehaviour
 {
     [SerializeField] private float chasingSpeed;
-
     private float _startPositionX;
+    private Transform _cam;
 
     private void Start()
     {
-        _startPositionX = this.transform.position.x - this.transform.parent.position.x;
+        _cam = this.transform.parent;
+        _startPositionX = this.transform.position.x - _cam.position.x;
     }
 
     // Update is called once per frame
@@ -29,6 +30,10 @@ public class ChasingRobotController : MonoBehaviour
 
     public void PushBackward()
     {
-        this.transform.DOMoveX(this.transform.parent.position.x + _startPositionX, 1);
+        // Move outside the camera and go back
+        this.transform.DOMoveX(_cam.position.x - 300, 2).OnComplete(() =>
+        {
+            transform.DOMoveX(_startPositionX, 4);
+        });
     }
 }
