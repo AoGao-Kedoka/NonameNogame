@@ -257,6 +257,11 @@ public class CharacterController : MonoBehaviour
             Debug.Log("Load Main Scene");
             SceneManager.LoadScene("Level");
         }
+        if (collision.gameObject.CompareTag("End"))
+        {
+            Debug.Log("Load End Scene");
+            SceneManager.LoadScene("End");
+        }
         List<String> tags = new List<String> { "ChasingRobot" };
         foreach(var tag in tags)
         {
