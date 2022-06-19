@@ -151,7 +151,10 @@ public class CharacterController : MonoBehaviour
     private void Dash(InputAction.CallbackContext context)
     {
         if (_canDash)
+        {
+            _animator.SetTrigger("dash");
             StartCoroutine(Dash());
+        }
     }
     
     
