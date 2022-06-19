@@ -278,7 +278,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8388834733895360521, guid: ab229c3c2fc24314e9c779d196291f70, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 588.5
+      value: 509.5
       objectReference: {fileID: 0}
     - target: {fileID: 8388834733895360521, guid: ab229c3c2fc24314e9c779d196291f70, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3345,7 +3345,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5116814075934066643, guid: f3dec6c7ceb88ce4e80e89fd55f2d65a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1228.1569
+      value: 1347.5
       objectReference: {fileID: 0}
     - target: {fileID: 5116814075934066643, guid: f3dec6c7ceb88ce4e80e89fd55f2d65a, type: 3}
       propertyPath: m_LocalPosition.y
@@ -6966,7 +6966,6 @@ GameObject:
   - component: {fileID: 835648168}
   - component: {fileID: 835648167}
   - component: {fileID: 835648166}
-  - component: {fileID: 835648165}
   m_Layer: 0
   m_Name: QuadFarBackground
   m_TagString: Background
@@ -6989,18 +6988,6 @@ Transform:
   m_Father: {fileID: 1601916936}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &835648165
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 835648163}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f082fc32369ba4f9882f0eb561e6be77, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!23 &835648166
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -7311,7 +7298,6 @@ GameObject:
   - component: {fileID: 888799788}
   - component: {fileID: 888799787}
   - component: {fileID: 888799786}
-  - component: {fileID: 888799785}
   m_Layer: 0
   m_Name: QuadFarBackground
   m_TagString: Background
@@ -7319,18 +7305,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &888799785
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 888799784}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f082fc32369ba4f9882f0eb561e6be77, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!23 &888799786
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -8222,7 +8196,6 @@ GameObject:
   - component: {fileID: 984393074}
   - component: {fileID: 984393073}
   - component: {fileID: 984393072}
-  - component: {fileID: 984393071}
   m_Layer: 0
   m_Name: QuadForground
   m_TagString: Background
@@ -8230,18 +8203,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &984393071
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 984393070}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f082fc32369ba4f9882f0eb561e6be77, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!23 &984393072
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -9906,7 +9867,6 @@ GameObject:
   - component: {fileID: 1142664477}
   - component: {fileID: 1142664476}
   - component: {fileID: 1142664475}
-  - component: {fileID: 1142664474}
   m_Layer: 0
   m_Name: QuadMidground
   m_TagString: Background
@@ -9929,18 +9889,6 @@ Transform:
   m_Father: {fileID: 1015840910}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1142664474
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1142664472}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f082fc32369ba4f9882f0eb561e6be77, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!23 &1142664475
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -12100,7 +12048,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 635133435195880773, guid: 0d7f1dbc0199a604fbdd8b91cd42f99b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 346.89975
+      value: 324
       objectReference: {fileID: 0}
     - target: {fileID: 635133435195880773, guid: 0d7f1dbc0199a604fbdd8b91cd42f99b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -12867,7 +12815,7 @@ GameObject:
   - component: {fileID: 1520188943}
   m_Layer: 6
   m_Name: Square (2)
-  m_TagString: Untagged
+  m_TagString: Door
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12880,7 +12828,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1520188941}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1379, y: -115.474045, z: -5.421608}
+  m_LocalPosition: {x: 1346, y: -115.474045, z: -5.421608}
   m_LocalScale: {x: 100, y: 400, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -16313,19 +16261,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1155867201, guid: 418a70f2a6c5eb4419c3b5ff389efb84, type: 3}
       propertyPath: m_Size.x
-      value: 25.44436
+      value: 13.157242
       objectReference: {fileID: 0}
     - target: {fileID: 1155867201, guid: 418a70f2a6c5eb4419c3b5ff389efb84, type: 3}
       propertyPath: m_Size.y
-      value: 11.419906
+      value: 6.2903214
       objectReference: {fileID: 0}
     - target: {fileID: 1155867201, guid: 418a70f2a6c5eb4419c3b5ff389efb84, type: 3}
       propertyPath: m_Offset.x
-      value: 0.26172733
+      value: 3.6615524
       objectReference: {fileID: 0}
     - target: {fileID: 1155867201, guid: 418a70f2a6c5eb4419c3b5ff389efb84, type: 3}
       propertyPath: m_Offset.y
-      value: -0.54880667
+      value: -1.5628018
       objectReference: {fileID: 0}
     - target: {fileID: 1586887053991742914, guid: 418a70f2a6c5eb4419c3b5ff389efb84, type: 3}
       propertyPath: m_Name
@@ -16337,11 +16285,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7383090669775239287, guid: 418a70f2a6c5eb4419c3b5ff389efb84, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 923.8
+      value: 782.6
       objectReference: {fileID: 0}
     - target: {fileID: 7383090669775239287, guid: 418a70f2a6c5eb4419c3b5ff389efb84, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -42.3
+      value: -2.6
       objectReference: {fileID: 0}
     - target: {fileID: 7383090669775239287, guid: 418a70f2a6c5eb4419c3b5ff389efb84, type: 3}
       propertyPath: m_LocalPosition.z
@@ -16349,7 +16297,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7383090669775239287, guid: 418a70f2a6c5eb4419c3b5ff389efb84, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071068
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7383090669775239287, guid: 418a70f2a6c5eb4419c3b5ff389efb84, type: 3}
       propertyPath: m_LocalRotation.x
@@ -16361,7 +16309,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7383090669775239287, guid: 418a70f2a6c5eb4419c3b5ff389efb84, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.7071068
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7383090669775239287, guid: 418a70f2a6c5eb4419c3b5ff389efb84, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -16373,7 +16321,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7383090669775239287, guid: 418a70f2a6c5eb4419c3b5ff389efb84, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 90
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 418a70f2a6c5eb4419c3b5ff389efb84, type: 3}
@@ -17094,6 +17042,10 @@ PrefabInstance:
       propertyPath: chasingSpeed
       value: 40
       objectReference: {fileID: 0}
+    - target: {fileID: 335521492570332095, guid: 0761eb079fff2dd45b0a68cd5b39b60b, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 559602571532547818, guid: 0761eb079fff2dd45b0a68cd5b39b60b, type: 3}
       propertyPath: m_Name
       value: ChasingRobot
@@ -17186,9 +17138,21 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.5195684
       objectReference: {fileID: 0}
+    - target: {fileID: 4765266436397332479, guid: 0761eb079fff2dd45b0a68cd5b39b60b, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 4875241748550863898, guid: 0761eb079fff2dd45b0a68cd5b39b60b, type: 3}
       propertyPath: m_LocalPosition.y
       value: 8.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 5433554754905967111, guid: 0761eb079fff2dd45b0a68cd5b39b60b, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 6087869926273958543, guid: 0761eb079fff2dd45b0a68cd5b39b60b, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 6500071786229559901, guid: 0761eb079fff2dd45b0a68cd5b39b60b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -17197,6 +17161,14 @@ PrefabInstance:
     - target: {fileID: 6857781363562693759, guid: 0761eb079fff2dd45b0a68cd5b39b60b, type: 3}
       propertyPath: m_LocalPosition.y
       value: -1.2064717
+      objectReference: {fileID: 0}
+    - target: {fileID: 7209034178471986336, guid: 0761eb079fff2dd45b0a68cd5b39b60b, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 8253622748494161284, guid: 0761eb079fff2dd45b0a68cd5b39b60b, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 8432431265755408439, guid: 0761eb079fff2dd45b0a68cd5b39b60b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -19410,7 +19382,6 @@ GameObject:
   - component: {fileID: 2117190244}
   - component: {fileID: 2117190243}
   - component: {fileID: 2117190242}
-  - component: {fileID: 2117190241}
   m_Layer: 0
   m_Name: QuadMidground
   m_TagString: Background
@@ -19418,18 +19389,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2117190241
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2117190240}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f082fc32369ba4f9882f0eb561e6be77, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!23 &2117190242
 MeshRenderer:
   m_ObjectHideFlags: 0

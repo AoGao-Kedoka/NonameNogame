@@ -7,9 +7,9 @@ using DG.Tweening;
 public class Bullet : MonoBehaviour
 {
     // Start is called before the first frame update
-    [SerializeField] public float speed = 80f;
+    [SerializeField] public float speed = 120f;
     [SerializeField] public Rigidbody2D rb;
-     private float pushbackForce = 1000f;
+    [SerializeField] private float pushbackForce = 2f;
 
 
     void Start()
@@ -26,8 +26,8 @@ public class Bullet : MonoBehaviour
     {
         if (hitInfo.gameObject.CompareTag("ChasingRobot"))
         {
-            hitInfo.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(-pushbackForce, 0f));
-            Destroy(gameObject, 2f);
+            hitInfo.gameObject.GetComponent<ChasingRobotController>().PushedBack();
+            Destroy(gameObject, 1f);
         }
     }
 

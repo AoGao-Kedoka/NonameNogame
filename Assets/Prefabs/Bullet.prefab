@@ -101,6 +101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 80
   rb: {fileID: 1823952669669581044}
+  pushbackForce: 2500
 --- !u!50 &1823952669669581044
 Rigidbody2D:
   serializedVersion: 4
