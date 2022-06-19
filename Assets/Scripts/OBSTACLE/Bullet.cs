@@ -27,7 +27,7 @@ public class Bullet : MonoBehaviour
         if (hitInfo.gameObject.CompareTag("ChasingRobot"))
         {
             hitInfo.gameObject.GetComponent<ChasingRobotController>().PushedBack();
-            Destroy(gameObject, 1f);
+            Destroy(gameObject);
         }
     }
 
