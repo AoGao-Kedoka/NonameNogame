@@ -1474,7 +1474,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -3541,7 +3541,7 @@ PrefabInstance:
       objectReference: {fileID: 168331648}
     - target: {fileID: -4306962289475312424, guid: 0761eb079fff2dd45b0a68cd5b39b60b, type: 3}
       propertyPath: chasingSpeed
-      value: 40
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 559602571532547818, guid: 0761eb079fff2dd45b0a68cd5b39b60b, type: 3}
       propertyPath: m_Name
@@ -4580,7 +4580,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5556408377694786457, guid: 418a70f2a6c5eb4419c3b5ff389efb84, type: 3}
       propertyPath: pushbackForce
-      value: 15
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7383090669775239287, guid: 418a70f2a6c5eb4419c3b5ff389efb84, type: 3}
       propertyPath: m_RootOrder
