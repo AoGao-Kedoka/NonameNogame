@@ -19,7 +19,7 @@ public class SceneLoader : MonoBehaviour
     
     public void LoadMainLevel()
     {
-        SceneManager.LoadScene("MainLevel");
+        SceneManager.LoadScene("Level");
     }
 
 
