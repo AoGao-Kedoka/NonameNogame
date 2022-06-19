@@ -9,7 +9,7 @@ public class Bullet : MonoBehaviour
     // Start is called before the first frame update
     [SerializeField] public float speed = 80f;
     [SerializeField] public Rigidbody2D rb;
-     private float pushbackForce = 70f;
+     private float pushbackForce = 1000f;
 
 
     void Start()
@@ -24,11 +24,9 @@ public class Bullet : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D hitInfo)
     {
-
         if (hitInfo.gameObject.CompareTag("ChasingRobot"))
         {
             hitInfo.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(-pushbackForce, 0f));
-
             Destroy(gameObject, 2f);
         }
     }
