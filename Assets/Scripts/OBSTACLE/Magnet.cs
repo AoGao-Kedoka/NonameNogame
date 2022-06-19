@@ -58,8 +58,5 @@ public class Magnet : Obstacle
             }  
         }
 
-        Debug.Log("Force: " + multiplier*pushbackForce);
-        Debug.Log("MoveSpeed" + GameObject.Find("ChasingRobot").GetComponent<Rigidbody2D>().velocity);
-
     }
 }
