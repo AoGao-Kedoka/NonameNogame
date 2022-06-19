@@ -10,6 +10,7 @@ SemesterGameJam repo for NonameNogame
 
 ## Screenshots of the game
 ### Screenshot 1
-![](Screenshots\screen.png)
+![](https://user-images.githubusercontent.com/58142398/174481383-21d93b0a-2b33-470f-bcfd-b96aea8a4b70.png)
+
 ### Screenshot 2
-![](Screenshots\screen1.png)
+![](https://user-images.githubusercontent.com/58142398/174481373-d1258851-f200-45b2-b68a-c81d5be97587.png)
