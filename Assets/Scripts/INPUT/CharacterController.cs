@@ -240,13 +240,14 @@ public class CharacterController : MonoBehaviour
         //Play Dead Animation
         _animator.SetBool("dead", true);
 
-        ////Respawn at last Checkpoint, wait at the same position 1 seconds, and then respone
-        //var currentScene = SceneManager.GetActiveScene();
-        //this.transform.DOMoveX(transform.position.x, 1).OnComplete(() =>
-        //{
-            // reset the whole scene
-            //SceneManager.LoadScene(currentScene.name);
-        //});
+        //Respawn at last Checkpoint, wait at the same position 1 seconds, and then respone
+        var currentScene = SceneManager.GetActiveScene();
+        this._playerInputAction.Disable();
+        this.transform.DOMoveX(transform.position.x, 1).OnComplete(() =>
+        {
+          // reset the whole scene
+          SceneManager.LoadScene(currentScene.name);
+        });
     }
 
     private void OnCollisionEnter2D(Collision2D collision) {
@@ -254,7 +255,7 @@ public class CharacterController : MonoBehaviour
         if (collision.gameObject.CompareTag("Door"))
         {
             Debug.Log("Load Main Scene");
-            SceneManager.LoadScene("MainScene");
+            SceneManager.LoadScene("Level");
         }
         List<String> tags = new List<String> { "ChasingRobot" };
         foreach(var tag in tags)
