@@ -8,6 +8,7 @@ TagManager:
   - Background
   - ChasingRobot
   - Laser
+  - Door
   layers:
   - Default
   - TransparentFX

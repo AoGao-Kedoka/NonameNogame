@@ -248,6 +248,11 @@ public class CharacterController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision) {
         //TODO: add more 
+        if (collision.gameObject.CompareTag("Door"))
+        {
+            Debug.Log("Load Main Scene");
+            SceneManager.LoadScene("MainScene");
+        }
         List<String> tags = new List<String> { "ChasingRobot" };
         foreach(var tag in tags)
         {
@@ -257,4 +262,5 @@ public class CharacterController : MonoBehaviour
             }
         }
     }
+
 }
