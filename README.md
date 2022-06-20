@@ -1,12 +1,15 @@
 # NonameNogame
 SemesterGameJam repo for NonameNogame
 
-## Members
+## NonameNogame Members
 - [Okay Ünal](https://github.com/lNoro)
 - [Klejdi Sinollari](https://github.com/ksDOT)
 - [Mingqi Han](https://github.com/MuZiQiAM)
-- [Zixiang Wang](https://github.com/ZixiangWang)
+- [Zixiang Wang](https://github.com/wangzixiang0317)
 - [Ao Gao](https://github.com/AoGao-Kedoka)
+
+## Play it!
+https://nnng.itch.io/override-city
 
 ## Screenshots of the game
 ### Screenshot 1
@@ -14,3 +17,5 @@ SemesterGameJam repo for NonameNogame
 
 ### Screenshot 2
 ![](https://user-images.githubusercontent.com/58142398/174481373-d1258851-f200-45b2-b68a-c81d5be97587.png)
+
+
