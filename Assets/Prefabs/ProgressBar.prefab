@@ -27,7 +27,7 @@ RectTransform:
   m_GameObject: {fileID: 2598283593019952455}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.50002, y: 0.50996006, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5328718123415609634}
@@ -74,6 +74,7 @@ MonoBehaviour:
   fill: {fileID: 5328718124082805568}
   timeToOverride: 0.00005
   animator: {fileID: 4966357805343962611}
+  overrideTime: 8
 --- !u!1 &5328718123415609635
 GameObject:
   m_ObjectHideFlags: 0

@@ -26,9 +26,9 @@ public class AttackingRobotController : Obstacle
         }
     }
 
-   // public void GetOverride(InputAction.CallbackContext context)
+    // public void GetOverride(InputAction.CallbackContext context)
     //{
-      //  overrided = true;
+    //  overrided = true;
     //}
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -39,5 +39,5 @@ public class AttackingRobotController : Obstacle
             collision.GetComponent<ChasingRobotController>().PushedBack();
         }
     }
-    
+
 }

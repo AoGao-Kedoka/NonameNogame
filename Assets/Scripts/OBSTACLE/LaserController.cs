@@ -7,27 +7,25 @@ using UnityEditor;
 
 public class LaserController : Obstacle
 {
-    [SerializeField] private Vector3 defDistanceRay = new Vector3 (100f, 0, 0);
+    [SerializeField] private Vector3 defDistanceRay = new Vector3(100f, 0, 0);
 
     public Transform laserFirePoint;
     public LineRenderer lineRenderer;
-    Transform _transform;
     public GameObject bulletPrefab;
 
     // Start is called before the first frame update
     private void Awake()
     {
-        this._transform = GetComponent<Transform>();
         lineRenderer.widthMultiplier = 10f;
     }
 
     // Update is called once per frame
     void Update()
     {
-            if (!this.overriden)
-            {
-                KillPlayer();
-            }
+        if (!this.overriden)
+        {
+            KillPlayer();
+        }
     }
 
     [ContextMenu("Interact Pressed")]
@@ -40,33 +38,30 @@ public class LaserController : Obstacle
 
     private void KillPlayer()
     {
-        RaycastHit2D hit = Physics2D.Raycast(this._transform.position, transform.right, 100f);
-        bool found = false;
-        if (hit.collider.gameObject.CompareTag("Player"))
+        RaycastHit2D[] hits = Physics2D.RaycastAll(laserFirePoint.position, Vector2.right, 100f);
+        foreach (var hit in hits)
         {
-            found = true;
-        }
-        if(found)
-        {
-            Draw2DRay(laserFirePoint.position, hit.point);
-            hit.collider.gameObject.GetComponent<CharacterController>().Die();
-        }
-        else
-        {
-            Draw2DRay(laserFirePoint.position, laserFirePoint.position + this.defDistanceRay);
+            if (hit.collider.gameObject.CompareTag("Player"))
+            {
+                hit.collider.gameObject.GetComponent<CharacterController>().Die();
+            }
+            else
+            {
+                Draw2DRay(laserFirePoint.position, laserFirePoint.position + this.defDistanceRay);
+            }
         }
     }
 
 
-    
+
 
     private void KillEnemies()
     {
         ///his.transform.parent.RotateAround(transform.position, transform.parent.up, 180f);
         this.transform.parent.localScale *= -1;//(transform.position, transform.parent.up, 180f);
-        //Vector3 position = this.GetComponent<Renderer>().bounds.center;
+                                               //Vector3 position = this.GetComponent<Renderer>().bounds.center;
 
-       // this.transform.RotateAround(position, new Vector3(0f, 180f,0f), 10 * Time.deltaTime);
+        // this.transform.RotateAround(position, new Vector3(0f, 180f,0f), 10 * Time.deltaTime);
         Instantiate(this.bulletPrefab, this.laserFirePoint.position, laserFirePoint.rotation);
     }
 
@@ -74,6 +69,11 @@ public class LaserController : Obstacle
     {
         this.lineRenderer.SetPosition(0, startPos);
         this.lineRenderer.SetPosition(1, endPos);
-        
+
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawLine(laserFirePoint.position, laserFirePoint.position + Vector3.right * 100f);
     }
 }

@@ -11,11 +11,11 @@ public class CharacterController : MonoBehaviour
 {
     [SerializeField] private float speed, jumpSpeed;
     [SerializeField] private LayerMask ground;
-    
+
     private PlayerInputAction _playerInputAction;
     private Rigidbody2D _rigidbody;
     private Collider2D _collider;
-    
+
     private bool _faceRight = true;
     private bool _doubleJump;
     private bool _canDash = true;
@@ -28,16 +28,16 @@ public class CharacterController : MonoBehaviour
     [SerializeField] private float _dashingCooldown = 1f;
 
     [SerializeField] private ProgressBar progressBar;
+    [SerializeField] private ChasingRobotController chasingRobot;
 
     private Animator _animator;
-    private List<GameObject> inrangeObstacles;
+    private List<GameObject> inrangeObstacles = new List<GameObject>();
     private bool _canOverride = false;
 
     private Vector3 _startPosition;
 
     private void Awake()
     {
-        inrangeObstacles= new List<GameObject>();
         _playerInputAction = new PlayerInputAction();
         _rigidbody = GetComponent<Rigidbody2D>();
         _collider = GetComponent<Collider2D>();
@@ -54,13 +54,13 @@ public class CharacterController : MonoBehaviour
         _playerInputAction.PLAYER.OVERRIDE.started += Override;
     }
 
-    
+
     // Update is called once per frame
     void Update()
     {
         if (_isDashing)
             return;
-        
+
         //Move();
         if (isGrounded())
         {
@@ -79,7 +79,7 @@ public class CharacterController : MonoBehaviour
     {
         if (_isDashing)
             return;
-        
+
         Move();
     }
 
@@ -107,7 +107,7 @@ public class CharacterController : MonoBehaviour
         //
         // transform.position = currentPosition;
 
-        if(val > 0 || val < 0)
+        if (val > 0 || val < 0)
         {
             _animator.SetBool("running", true);
         }
@@ -116,7 +116,7 @@ public class CharacterController : MonoBehaviour
             _animator.SetBool("running", false);
         }
         _rigidbody.velocity = new Vector2(val * speed, _rigidbody.velocity.y);
-        
+
         Flip(val);
     }
 
@@ -137,7 +137,7 @@ public class CharacterController : MonoBehaviour
     {
         if (_isDashing)
             return;
-        
+
         if (_coyoteTimeCounter > 0f || _doubleJump)
         {
             _animator.SetBool("jump", true);
@@ -156,16 +156,15 @@ public class CharacterController : MonoBehaviour
             StartCoroutine(Dash());
         }
     }
-    
-    
+
+
     private void Override(InputAction.CallbackContext context)
     {
         if (_canOverride)
         {
             progressBar.StartOverride(inrangeObstacles);
             _canOverride = false;
-            _animator.SetBool("smash", true);           
-
+            _animator.SetTrigger("smash");
         }
     }
 
@@ -179,7 +178,7 @@ public class CharacterController : MonoBehaviour
 
     public void LeftOverrideRange(GameObject obj)
     {
-        inrangeObstacles.Remove(obj);        
+        inrangeObstacles.Remove(obj);
     }
 
 
@@ -210,7 +209,7 @@ public class CharacterController : MonoBehaviour
             Vector2 botRight = transform.position;
             botRight.x += _collider.bounds.extents.x;
             botRight.y -= _collider.bounds.extents.y;
-            if(!Physics2D.OverlapArea(topLeft, botRight, ground))
+            if (!Physics2D.OverlapArea(topLeft, botRight, ground))
                 _collider.enabled = true;
         }
     }
@@ -223,34 +222,45 @@ public class CharacterController : MonoBehaviour
         float originalGravity = _rigidbody.gravityScale;
         _rigidbody.gravityScale = 0f;
         _rigidbody.velocity = new Vector2(transform.localScale.x * _dashingPower, 0f);
-        
+
         yield return new WaitForSeconds(_dashingTime);
-        
+
         _rigidbody.gravityScale = originalGravity;
         _isDashing = false;
-        
+
         yield return new WaitForSeconds(_dashingCooldown);
-        
+
         _canDash = true;
     }
 
 
     public void Die()
     {
+        StartCoroutine(DieAndRespawn());
+    }
+
+
+    private IEnumerator DieAndRespawn()
+    {
         //Play Dead Animation
+        chasingRobot.chasingSpeed = 0f;
         _animator.SetBool("dead", true);
+
+        yield return new WaitForSeconds(2.5f);
 
         //Respawn at last Checkpoint, wait at the same position 1 seconds, and then respone
         var currentScene = SceneManager.GetActiveScene();
         this._playerInputAction.Disable();
         this.transform.DOMoveX(transform.position.x, 1).OnComplete(() =>
         {
-          // reset the whole scene
-          SceneManager.LoadScene(currentScene.name);
+            // reset the whole scene
+            SceneManager.LoadScene(currentScene.name);
         });
     }
 
-    private void OnCollisionEnter2D(Collision2D collision) {
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
         //TODO: add more 
         if (collision.gameObject.CompareTag("Door"))
         {
@@ -263,7 +273,7 @@ public class CharacterController : MonoBehaviour
             SceneManager.LoadScene("End");
         }
         List<String> tags = new List<String> { "ChasingRobot" };
-        foreach(var tag in tags)
+        foreach (var tag in tags)
         {
             if (collision.gameObject.CompareTag(tag))
             {
